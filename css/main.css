@@ -1,1 +1,104 @@
-/* add custom styles */
+
+body, html{
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  height: 100%;
+  padding-bottom: 50px;
+  font-weight: bold;
+ /* background: -webkit-linear-gradient(bottom left, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: -o-linear-gradient(bottom left, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
+  background: linear-gradient(to top right, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);*/
+}
+
+.bring{
+  height: 100%;
+  width: 50%;
+  float:left;
+}
+
+.weather-info{
+  height: 100%;
+  width: 50%;
+  float:right;
+  clear: right;
+}
+.header{
+  border:3px solid #4cadad;
+  background-color: white;
+  text-align: center;
+}
+
+.container{
+  float:left;
+  height: 100%;
+}
+
+.sml{
+  height: 200px;
+}
+
+.jumbotron{
+  width:100%;
+}
+
+.packing{
+  width: 50%
+
+}
+
+.lists{
+    -webkit-columns: 4 180px;
+     -moz-columns: 4 180px;
+          columns: 4 180px;
+}
+
+.add-item-div{
+  float: right;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.delete-click{
+  background-color:#A60000;
+  color : white;
+  height: 20px;
+  font-size: 8px;
+  margin-left: 10px;
+  vertical-align: text-top;
+}
+
+.packing-div{
+   -webkit-columns: 4 180px;
+     -moz-columns: 4 180px;
+          columns: 4 180px;
+}
+
+.submit{
+  font-size: 16px;
+  background-color: white
+}
+
+.invis{
+  display: none;
+}
+
+.quantity-btn{
+  text-align: center;
+  width:50px;
+}
+
+.footer{
+  background-color: #4CADAD;
+  border-top: 3px black solid;
+  border-bottom: 3px black solid;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
