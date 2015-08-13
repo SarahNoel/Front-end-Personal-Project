@@ -1,34 +1,82 @@
 $(document).on('ready', function() {
-  var lists = [standardClothes, standardToiletries, standardMisc, userAdd];
-    console.log(lists);
-
-  //append weather info
-  $(".weather-info").append(" The average temperature will be 75 degrees.  It will be mostly sunny with a chance of rain.");
-
-
 
   //get trip info on submit
   $('#trip-info').on("submit", function(e){
+    e.preventDefault();
+    var leave = $('#leave').val();
     var length = $('#days').val();
     var destination = $('#location').val();
-    e.preventDefault();
-    //hide trip form
-    $('#trip-info-div').fadeOut();
-    //print trip details
-    $('.trip-deets').append("<h4> You are going to " + destination + " for " + length + " days!</h4>");
-    $('.invis').fadeIn().append(printLists(lists));
+
+    //makes sure all forms are filled
+    if (destination === ('')) {
+      alert("Please input a valid city");
+    }
+    else if(leave=== ('')) {
+      alert("Please specify when you shall depart.");
+      }
+    else if(length === ('')) {
+      alert("Please specify the length of your trip.");
+    }
+    else{
+      //updates packing list quantities
+      listQuantity(lists, length);
+      //hide trip form
+      $('#trip-info-div').fadeOut();
+      //print trip details
+      $('.trip-deets').append("<h3> You are going to " + destination + " for " + length + " days!</h3>");
+      //packing info appears
+      $('.invis').fadeIn().append(renderLists(lists));
+      // create search URL for getting weather
+      var searchUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&units=imperial&cnt=16&APPID=30dc5c7ce321f6b73a438b169eb9df48";
+
+      // ajax request
+      $.ajax({
+        url: searchUrl,
+        type: 'GET',
+        success:function(data){
+          //define variables
+          var returnDay = parseFloat(leave) + parseFloat(length);
+          var temp = data.list[leave].temp.day.toFixed(0);
+          var conditions = data.list[leave].weather[0].description;
+          var dailyHigh;
+          var dailyLow;
+          var dailyConditions;
+          var dayNum;
+          var start = parseFloat(leave) + 1;
+          //accounts for weather api limititations
+          if (returnDay > 15) {
+            returnDay = 15;
+          }
+
+          //print arrival weather conditions
+          $(".weather-info").append("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.</p><p>Conditions: " + conditions + ". </p><p>The weather the rest of the trip looks like this: (note: weather forecast extends only 15 days from today)</p>");
+
+          //prints weather conditions for trip days
+          for (var i = start; i <= returnDay; i++) {
+            dayNum = i - start + 1;
+            dailyLow = data.list[i].temp.min.toFixed(0);
+            dailyHigh = data.list[i].temp.max.toFixed(0);
+            dailyConditions = data.list[i].weather[0].description;
+           $(".weather-info").append("<p>Day " + dayNum + ": <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions: " + dailyConditions + "</p>");
+          }
+        },
+        error:function(data){
+          alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
+        }
+      });
+    }
   });
 
-
-//add new Item to Etc list
-$('#new-item').on("click", function(e){
-    e.preventDefault();
-    var newItem = new ListItem($("#item").val(), $("#quantity").val());
-    userAdd.packItem(newItem);
-    printLists(lists);
-    $("#item").val("");
-    $("#quantity").val("");
-  });
+  //add new Item to Etc list
+  $('#new-item').on("click", function(e){
+      e.preventDefault();
+      var newItem = new ListItem($("#item").val(), $("#quantity").val());
+      userAdd.packItem(newItem);
+      renderLists(lists);
+      //clears inputs
+      $("#item").val("");
+      $("#quantity").val("");
+    });
 
   //deletes item
   $(document).on("click", '.delete-click', function(){
@@ -43,24 +91,9 @@ $('#new-item').on("click", function(e){
           listD = lists[i];
           indexD = listD.list.indexOf(itemDelete);
           listD.list.splice(indexD, 1);
+        }
       }
     }
-  }
-  // remove from screen on click
-  $(this).closest('div').remove();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $(this).closest('div').remove();
+  });
 }); //end of document

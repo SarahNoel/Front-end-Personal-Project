@@ -12,7 +12,7 @@
 
 <div class ="header">
   <h1>Do I Have Everything?</h1>
-  <p>Helping ensure well-packed travelers around the globe. </p>
+  <h4>Helping ensure well-packed travelers around the globe. </h4>
 </div>
 
 <div class = "container">
@@ -22,29 +22,33 @@
   <div class = "jumbotron answer-div" id = "trip-info-div">
 
   <form id = "trip-info">
-    How many days will you be gone?
+    <h3>When are you leaving?</h3>
+    In   <input class = "clear-input" id = "leave" type="number" name="quantity" min="0" max="14">  days.
     <br>
-  <input id = "days" type="number" name="quantity" min="1" max="14">
+    <h3> How many days will you be gone?</h3>
+  <input class = "clear-input" id = "days" type="number" name="quantity" min="1" max="14">
     <br>
-    Where are you going?
-    <br>
-  <input id = "location" type="text" name="city">
+    <h3>Where are you going?</h3>
+   <input class = "clear-input" id = "location" type="text" name="city">
     <br>
     <br>
   <input type = "submit" value= "Let's get packing!" class="submit">
   </form>
   </div>
 
-  <div class = "jumbotron sml invis">
-    <div class = "bring">
-    <h3>What should you bring?</h3>
-    </div>
-
+  <div class = " sml invis">
     <div class = "weather-info">
-    The Weather for your trip:
+    <h4>The Weather for your trip:</h4>
     </div>
+</div>
+  <div class= "all-pack">
 
-  </div>
+<h3 class= " invis row">What should you bring?</h3>
+<div class = "packing-div invis">
+
+  <ul id="packing-list"></ul>
+
+</div>
 
     <div class="add-item-div invis" >
       <form>Item to Add: <br>
@@ -57,15 +61,7 @@
         <br>
     </div>
 
-  <ul id="packing-list"></ul>
-
-<div class = "lists">
-
-
 </div>
-
-
-
 </div>
 
 

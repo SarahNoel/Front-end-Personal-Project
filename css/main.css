@@ -10,18 +10,27 @@ body, html{
   background: linear-gradient(to top right, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);*/
 }
 
-.bring{
-  height: 100%;
-  width: 50%;
-  float:left;
+.container{
+  width: 100%;
 }
 
-.weather-info{
-  height: 100%;
-  width: 50%;
-  float:right;
-  clear: right;
+p{
+  font-size: 14px;
+  font-weight: lighter;
 }
+.all-pack{
+  width: 100%
+}
+
+
+.row{
+  float: left;
+  width: 100%;
+}
+/*.weather-info{
+  height: 100%;
+  width: 100%;
+}*/
 .header{
   border:3px solid #4cadad;
   background-color: white;
@@ -33,27 +42,38 @@ body, html{
   height: 100%;
 }
 
-.sml{
-  height: 200px;
+li{
+  font-size: 16px;
+  font-weight: lighter;
+
 }
 
 .jumbotron{
   width:100%;
 }
-
-.packing{
-  width: 50%
-
+.row{
+  float: left;
+}
+.packing-div{
+  clear: left;
+  float: left;
+  width: 100%;
+    -webkit-columns: 4 200px;
+     -moz-columns: 4 200px;
+          columns: 4 200px;
 }
 
-.lists{
-    -webkit-columns: 4 180px;
-     -moz-columns: 4 180px;
-          columns: 4 180px;
+ .weather-info{
+  float: left;
+  width: 100%;
+    -webkit-columns: 4 200px;
+     -moz-columns: 4 200px;
+          columns: 4 200px;
 }
 
 .add-item-div{
-  float: right;
+  float: left;
+  width: 25%
 }
 
 h1{
@@ -63,18 +83,8 @@ h1{
 }
 
 .delete-click{
-  background-color:#A60000;
-  color : white;
-  height: 20px;
-  font-size: 8px;
   margin-left: 10px;
   vertical-align: text-top;
-}
-
-.packing-div{
-   -webkit-columns: 4 180px;
-     -moz-columns: 4 180px;
-          columns: 4 180px;
 }
 
 .submit{
@@ -89,6 +99,11 @@ h1{
 .quantity-btn{
   text-align: center;
   width:50px;
+}
+
+.clear-input{
+  background-color: #eee;
+  text-align: center;
 }
 
 .footer{
