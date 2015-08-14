@@ -27,10 +27,10 @@
     <div class="trip-form">
       <form id = "trip-info">
         <h3>When are you leaving?</h3>
-        In   <input class = "clear-input" id = "leave" type="number" name="quantity" min="0" max="14">  days.
+        In   <input class = "clear-input center" id = "leave" type="number" name="quantity" min="0" max="14">  days.
         <br>
         <h3> How many days will you be gone?</h3>
-      <input class = "clear-input" id = "days" type="number" name="quantity" min="1" max="14">
+      <input class = "clear-input center" id = "days" type="number" name="quantity" min="1" max="14">
         <br>
         <h3>Where are you going?</h3>
        <input class = "clear-input" id = "location" type="text" name="city">
@@ -42,16 +42,16 @@
 
       <div class = "trip-activity-form">
           <p>Does your trip include...</p>
-          <select multiple class = "activities">
-            <option value="ski">Skiing/Snowboarding?</option>
-            <option value="swim">Swimming?</option>
-            <option value="camp">Camping?</option>
-            <option value="hike">Hiking?</option>
+          <select id="activities" multiple class = "activities clear-input" size=5>
+            <option value="Ski/Snowboard">Skiing/Snowboarding?</option>
+            <option value="Swimming">Swimming?</option>
+            <option value="Camping">Camping?</option>
+            <option value="Hiking">Hiking?</option>
             <option value="none">Nope!</option>
 
           </select>
           <br>
-          <h6 class = "tiny">(Hold command to select multiple activities)</h6>
+          <h6 class = "tiny">(Hold command/ctrl to select multiple activities)</h6>
         </div>
 
     </div>

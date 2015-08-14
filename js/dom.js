@@ -6,8 +6,9 @@ $(document).on('ready', function() {
     var leave = $('#leave').val();
     var length = $('#days').val();
     var destination = $('#location').val();
-    var activities = $('.option:selected');
-    console.log(activities);
+    var activities = $('#activities option:selected');
+    var activitiesArray = (activityNames(activities));
+
     //makes sure all forms are filled
     if (destination === ('')) {
       alert("Please input a valid city");
@@ -19,14 +20,10 @@ $(document).on('ready', function() {
       alert("Please specify the length of your trip.");
     }
     else{
-      //updates packing list quantities
-      listQuantity(lists, length);
+      var weatherDeets = [];
+      var useWeather;
       //hide trip form
       $('.hide-later').fadeOut();
-      //packing info appears
-      $('.invis').fadeIn().append(renderLists(lists));
-      //print trip details
-      $('.trip-deets').append("<h3 class='center'> You are going to " + destination + " for " + length + " days!</h3><h4 class = 'center'>The Weather for your trip:</h4>");
       // create search URL for getting weather
       var searchUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&units=imperial&cnt=16&APPID=30dc5c7ce321f6b73a438b169eb9df48";
 
@@ -36,6 +33,7 @@ $(document).on('ready', function() {
         type: 'GET',
         success:function(data){
           //define variables
+          console.log(data);
           var returnDay = parseFloat(leave) + parseFloat(length);
           var temp = data.list[leave].temp.day.toFixed(0);
           var conditions = data.list[leave].weather[0].description;
@@ -49,6 +47,9 @@ $(document).on('ready', function() {
             returnDay = 15;
           }
 
+          //print trip details
+          $('.trip-deets').append("<h3 class='center'> You are going to " + destination + " for " + length + " days!</h3><h4 class = 'center'>The Weather for your trip:</h4>");
+
           //print arrival weather conditions
           $(".weather-info").append("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.</p><p>Conditions: " + conditions + ". </p><p>The weather the rest of the trip looks like this: (note: weather forecast extends only 15 days from today)</p>");
 
@@ -58,15 +59,39 @@ $(document).on('ready', function() {
             dailyLow = data.list[i].temp.min.toFixed(0);
             dailyHigh = data.list[i].temp.max.toFixed(0);
             dailyConditions = data.list[i].weather[0].description;
+            weatherDeets.push(dailyLow, dailyHigh, dailyConditions);
            $(".weather-info").append("<p>Day " + dayNum + ": <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions: " + dailyConditions + "</p>");
           }
+          //adds lists based on weather
+          checkWeather(weatherDeets, activitiesArray);
+
+          //updates packing list quantities
+          listQuantity(lists, length);
+
+          //packing info appears
+          //finds which list to use
+          $('.invis').fadeIn().append(renderLists(listActivities(activitiesArray, allLists, lists)));
+
         },
         error:function(data){
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
         }
       });
-    }
-  });
+
+
+    } //end else statement
+  }); //end submit button
+
+
+
+
+
+
+
+
+
+
+
 
   //add new Item to Etc list
   $('#new-item').on("click", function(e){
@@ -102,8 +127,5 @@ $(document).on('ready', function() {
   $(document).on("click", ".check", function(){
     $(this).toggleClass('checked');
   });
-
-
-
 
 }); //end of document

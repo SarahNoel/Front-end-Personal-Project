@@ -83,12 +83,62 @@ function listQuantity(lists, length) {
   return lists;
 }
 
-//change Lists amount based on activities
-function activityList(activities) {
-  if (true) {};
 
+//change list based on weather
+function checkWeather(weatherArray, activitiesArray){
+  var split;
+  for (var i = 0; i < weatherArray.length; i++) {
+    split = weatherArray[i].split();
+    console.log(typeof split[0]);
+    if (split[0].indexOf("rain")!= -1) {
+      activitiesArray.push("Rainy Weather");
+    }else if(split[0].indexOf("snow")!= -1){
+      activitiesArray.push("Cold/Snowy Weather");
+    }else if(parseFloat(split[0]) < 40){
+      activitiesArray.push("Cold/Snowy Weather");
+    }else if(parseFloat(split[0]) > 41 && split[0] < 70){
+      activitiesArray.push("Chilly Weather");
+    }
+  }
+  console.log(activitiesArray);
+  return activitiesArray;
 }
 
+
+
+
+
+
+
+
+//create array of activity names
+function activityNames (activities){
+  var activity;
+  var activitiesArray = [];
+  for (var i = 0; i < activities.length; i++) {
+    activity = $(activities[i]).val();
+    activitiesArray.push(activity);
+  }
+  return activitiesArray;
+}
+
+// change Lists amount based on activities
+function listActivities (activities, allLists, lists){
+  var activity;
+  var pushMe;
+  for (var i = 0; i < activities.length; i++) {
+    for (var j = 0; j < allLists.length; j++) {
+      activity = activities[i];
+      if (activity === allLists[j].listName){
+        pushMe = allLists[j];
+        if (lists.indexOf(pushMe)===-1){
+        lists.splice(3, 0, pushMe);
+        }
+      }
+    }
+  }
+  return lists;
+}
 
 
 

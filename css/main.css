@@ -23,6 +23,10 @@ h1{
   font-size: 50px;
 }
 
+h4{
+  font-weight: bold;
+}
+
 li{
   font-size: 16px;
   font-weight: lighter;
@@ -96,9 +100,9 @@ li{
 }
 
 .columns{
-  -webkit-columns: 4 200px;
-   -moz-columns: 4 200px;
-        columns: 4 200px;
+  -webkit-columns: 5 200px;
+   -moz-columns: 5 200px;
+        columns: 5 200px;
 }
 
 .add-item-div{
@@ -133,7 +137,6 @@ li{
 
 .clear-input{
   background-color: #E8E0D5;
-  text-align: center;
 }
 
 .checked{
