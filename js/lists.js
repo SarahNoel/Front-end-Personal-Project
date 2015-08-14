@@ -10,12 +10,12 @@ var jewelry = new ListItem('Jewelry');
 
 //toiletries
 var soap = new ListItem('Soap');
-var shampoo = new ListItem('Shampoo/Conditioner');
+var shampoo = new ListItem('Shampoo/Cond.');
 var toothbrush = new ListItem('Toothbrush');
 var toothpaste = new ListItem('Toothpaste');
 var floss = new ListItem('Floss');
 var brush = new ListItem('Brush/Comb');
-var contact = new ListItem('Contact Lenses/Solution');
+var contact = new ListItem('Contact Lens/Sol.');
 var deodorant = new ListItem('Deodorant');
 var face = new ListItem('Face Cleaner');
 var sunscreen = new ListItem('Sunscreen');

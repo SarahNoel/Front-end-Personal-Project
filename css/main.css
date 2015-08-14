@@ -78,15 +78,17 @@ li{
 
 .center{
   text-align: center;
+  font-weight: bold;
 }
 
 .packing-div{
   clear: left;
   float: left;
   width: 100%;
-  background-color: #F5F2EE;
+  background-image: url("http://www.zingerbugimages.com/backgrounds/beige_parchment_paper_background_1800x1600.jpg");
   border-radius: 10px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .trip-deets{
