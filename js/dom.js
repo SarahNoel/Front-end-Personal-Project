@@ -5,7 +5,7 @@ $(document).on('ready', function() {
     e.preventDefault();
     var leave = $('#leave').val();
     var length = $('#days').val();
-    var destination = $('#location').val();
+    var destination = $('#location').val().toLowerCase();
     var activities = $('#activities option:selected');
     var activitiesArray = (activityNames(activities));
 
@@ -33,12 +33,12 @@ $(document).on('ready', function() {
         type: 'GET',
         success:function(data){
           //define variables
-          console.log(data);
           var returnDay = parseFloat(leave) + parseFloat(length);
           var temp = data.list[leave].temp.day.toFixed(0);
           var conditions = data.list[leave].weather[0].description;
           var dailyHigh;
           var dailyLow;
+          var dailyDay;
           var dailyConditions;
           var dayNum;
           var start = parseFloat(leave) + 1;
@@ -48,23 +48,29 @@ $(document).on('ready', function() {
           }
 
           //print trip details
-          $('.trip-deets').append("<h3 class='center'> You are going to " + destination + " for " + length + " days!</h3><h4 class = 'center'>The Weather for your trip:</h4>");
+          if(length<2){
+            $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for one day!</h3><h4 class = 'center'>The weather for your trip:</h4>");
+          }else{
+          $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for " + length + " days!</h3><h4 class = 'center'>The weather for your trip:</h4>");
+          }
 
           //print arrival weather conditions
-          $(".weather-info").append("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.</p><p>Conditions: " + conditions + ". </p><p>The weather the rest of the trip looks like this: (note: weather forecast extends only 15 days from today)</p>");
+          $(".weather-info").append("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.</p><p>Conditions: " + conditions + ". </p><p>The weather the rest of the trip looks like this:<br> (forecast extends max 14 days)</p>");
 
           //prints weather conditions for trip days
           for (var i = start; i <= returnDay; i++) {
             dayNum = i - start + 1;
             dailyLow = data.list[i].temp.min.toFixed(0);
             dailyHigh = data.list[i].temp.max.toFixed(0);
+            dailyDay = data.list[i].temp.day.toFixed(0);
             dailyConditions = data.list[i].weather[0].description;
-            weatherDeets.push(dailyLow, dailyHigh, dailyConditions);
-           $(".weather-info").append("<p>Day " + dayNum + ": <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions: " + dailyConditions + "</p>");
+            weatherDeets.push(dailyDay, dailyConditions);
+           $(".weather-info").append("<p><span class = 'bolder'>Day " + dayNum + "</span>: <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions: " + dailyConditions + "</p>");
           }
           //adds lists based on weather
           checkWeather(weatherDeets, activitiesArray);
-
+          //change weather images
+          weatherImage (activitiesArray);
           //updates packing list quantities
           listQuantity(lists, length);
 
@@ -77,10 +83,29 @@ $(document).on('ready', function() {
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
         }
       });
+      var imageURLs = [];
+      var oneWordDestination = cutWhiteSpace(destination);
+      var picUrl = "https://api.instagram.com/v1/tags/" + oneWordDestination + "/media/recent";
+      var exploreUrl = "http://www.instagram.com/explore/tags/" + oneWordDestination ;
+      // Instagram ajax request
+      $.ajax({
+        url: picUrl,
+        type: 'GET',
+        data: {client_id:'d04f59826a594c0e8690c8a05a777aa8'},
+        dataType:'jsonp',
+        success:function(data){
+          $("#pic-div").append('<a href="' + exploreUrl + '"><h4>See what people are tagging in ' + capitalize(destination) + '!</h4></a>');
+          var output = data.data;
+          // iterate through the returned data, appending the images to the dom
+          for(var i = 0; i < output.length; i++) {
+            imageURLs[i] = output[i].images.thumbnail.url;
+            $("#pic-div").append('<img src="' + imageURLs[i] + '"/>');
+          }
+        }
+      });
 
-
-    } //end else statement
-  }); //end submit button
+      } //end else statement
+    }); //end submit button
 
 
 

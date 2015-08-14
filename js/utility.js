@@ -89,7 +89,6 @@ function checkWeather(weatherArray, activitiesArray){
   var split;
   for (var i = 0; i < weatherArray.length; i++) {
     split = weatherArray[i].split();
-    console.log(typeof split[0]);
     if (split[0].indexOf("rain")!= -1) {
       activitiesArray.push("Rainy Weather");
     }else if(split[0].indexOf("snow")!= -1){
@@ -100,16 +99,21 @@ function checkWeather(weatherArray, activitiesArray){
       activitiesArray.push("Chilly Weather");
     }
   }
-  console.log(activitiesArray);
   return activitiesArray;
 }
 
-
-
-
-
-
-
+//change weather image
+function weatherImage (weatherArray){
+  if(weatherArray.indexOf("Rainy Weather")===1){
+    $('.square').css('background-image', 'url("rainclear.gif")');
+    return;
+  }else if(weatherArray.indexOf("Cold/Snowy Weather")===1){
+  $('.square').css('background-image', 'url("snowclear.gif")');return;
+  }else{
+  $('.weather1').css('background-image','url("sun.gif")');
+       $('.weather2').css('background-image', 'url("clouds.jpg")');
+  }
+}
 
 //create array of activity names
 function activityNames (activities){
@@ -141,9 +145,23 @@ function listActivities (activities, allLists, lists){
 }
 
 
+//capitalize
+function capitalize(string) {
+    var splitStr = string.split(' ');
+    var fullStr = '';
 
+    $.each(splitStr,function(index){
+        var currentSplit = splitStr[index].charAt(0).toUpperCase() + splitStr[index].slice(1);
+        fullStr += currentSplit + " ";
+    });
 
+    return fullStr;
+}
 
+// remove spaces
+function cutWhiteSpace(string) {
+  return string.replace(/ /g,'');
+}
 
 
 

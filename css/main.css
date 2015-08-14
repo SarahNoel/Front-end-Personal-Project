@@ -13,14 +13,15 @@ input{
 }
 
 p{
-  font-size: 14px;
+  font-size: 18px;
   font-weight: lighter;
 }
 
 h1{
+  font-family: 'Amatic SC', cursive;
   text-align: center;
   font-weight: bold;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 h4{
@@ -32,9 +33,26 @@ li{
   font-weight: lighter;
 }
 
+.square{
+  height: 125px;
+  width: 125px;
+  background-size: cover;
+}
+
+.weather1{
+  float: left;
+}
+
+.weather2{
+  float: right;
+}
+
 .sml{
   background-color: #90bab8;
   border-radius: 10px;
+  max-width: 1000px;
+  margin: auto;
+
 }
 
 .header{
@@ -43,12 +61,33 @@ li{
   text-align: center;
 }
 
-.jumbotron{
-  height: 65%;
-  padding-top: 10px;
+.wrapper{
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  width: 600px;
+}
+.answer-div{
+  border-radius: 30px;
+  max-height: 350px;
+  height: 100%;
   background-image: url("http://1942design.com/graphics/paper.jpg");
   background-size: cover;
+  max-width: 800px;
+  margin: auto;
+}
 
+.trip-form{
+  vertical-align: top;
+  float: left;
+  width: 305px;
+  height: 100%;
+}
+
+.trip-activity-form{
+  vertical-align: top;
+  margin-left: 305px;
+  text-align: center;
 }
 
 .container{
@@ -61,21 +100,12 @@ li{
   width: 100%
 }
 
-.trip-activity-form{
-  margin-left: 100px;
-  float: left;
-}
-
-
-.trip-form{
-  float:left;
-}
-
 .tiny{
   font-size: 12px;
 }
 
 .row{
+  padding-left: 10px;
   float: left;
   width: 100%;
 }
@@ -85,14 +115,35 @@ li{
   font-weight: bold;
 }
 
+.bolder{
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.lighter{
+  font-weight: lighter;
+}
+
 .packing-div{
   clear: left;
   float: left;
   width: 100%;
-  background-image: url("http://www.zingerbugimages.com/backgrounds/beige_parchment_paper_background_1800x1600.jpg");
   border-radius: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.parchment{
+  background-image: url("http://www.zingerbugimages.com/backgrounds/beige_parchment_paper_background_1800x1600.jpg");
+}
+
+.pic-div{
+  padding: 30px;
+  border-radius: 10px;
+  float: left;
+  width: 100%;
+  text-align: center;
 }
 
 .trip-deets{
@@ -106,8 +157,17 @@ li{
 }
 
 .add-item-div{
-  float: left;
-  width: 25%
+  text-align: center;
+  margin: auto;
+  width: 25%;
+  padding: 20px;
+  clear: both;
+  border-radius: 10px;
+}
+
+.shadow{
+  padding: 10px;
+  margin-top: 20px;
 }
 
 .weather-info{
@@ -141,9 +201,12 @@ li{
 
 .checked{
   text-decoration: line-through;
+  font-style: oblique;
 }
 
 .footer{
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
   background-color: #FAE0AF;
   border-top: 3px black solid;
   border-bottom: 3px black solid;
