@@ -6,7 +6,8 @@ $(document).on('ready', function() {
     var leave = $('#leave').val();
     var length = $('#days').val();
     var destination = $('#location').val();
-
+    var activities = $('.option:selected');
+    console.log(activities);
     //makes sure all forms are filled
     if (destination === ('')) {
       alert("Please input a valid city");
@@ -21,11 +22,11 @@ $(document).on('ready', function() {
       //updates packing list quantities
       listQuantity(lists, length);
       //hide trip form
-      $('#trip-info-div').fadeOut();
-      //print trip details
-      $('.trip-deets').append("<h3> You are going to " + destination + " for " + length + " days!</h3>");
+      $('.hide-later').fadeOut();
       //packing info appears
       $('.invis').fadeIn().append(renderLists(lists));
+      //print trip details
+      $('.trip-deets').append("<h3 class='center'> You are going to " + destination + " for " + length + " days!</h3><h4 class = 'center'>The Weather for your trip:</h4>");
       // create search URL for getting weather
       var searchUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&units=imperial&cnt=16&APPID=30dc5c7ce321f6b73a438b169eb9df48";
 
@@ -96,4 +97,13 @@ $(document).on('ready', function() {
     }
     $(this).closest('div').remove();
   });
+
+  //checks off list
+  $(document).on("click", ".check", function(){
+    $(this).toggleClass('checked');
+  });
+
+
+
+
 }); //end of document

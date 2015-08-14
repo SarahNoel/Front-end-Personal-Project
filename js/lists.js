@@ -1,8 +1,3 @@
-
-// quantity keys=> day= amount of days
-//                 less= days - 1
-
-
 //standard list items
 var bottoms = new ListItem('Bottoms', 'less');
 var tops = new ListItem('Tops', 'day');
@@ -46,6 +41,39 @@ var passport = new ListItem('Passport');
 var camera = new ListItem('Camera');
 var insurance = new ListItem('Insurance Info');
 
+//additional items
+var sweater = new ListItem('Sweater');
+
+var raincoat = new ListItem('Raincoat');
+var umbrella = new ListItem('Umbrella');
+var coat = new ListItem('Coat');
+var rainBoots = new ListItem('Rain Boots');
+
+var snowBoots = new ListItem('Snow Boots');
+var beanie = new ListItem('Hat/Beanie');
+var gloves = new ListItem('Gloves');
+var scarf = new ListItem('Scarf');
+
+//swim vacation
+var swimsuit = new ListItem('Swimsuit');
+var towel = new ListItem('Towel');
+
+
+//ski vacation
+var skiBoots = new ListItem('Ski Boots');
+var skis = new ListItem('Skis');
+// var towel = new ListItem('Towel');
+// var towel = new ListItem('Towel');
+// var towel = new ListItem('Towel');
+// var towel = new ListItem('Towel');
+// var towel = new ListItem('Towel');
+// var towel = new ListItem('Towel');
+
+
+//mountain vacation
+
+
+//pre-populated lists
 var standardClothes = new List("Clothes");
 standardClothes.list = [
   bottoms,
@@ -58,7 +86,6 @@ standardClothes.list = [
   jewelry
 ];
 
-// standardClothes.packItem(bottoms);
 var userAdd = new List("Etc");
 
 var standardToiletries = new List("Toiletries");
@@ -99,5 +126,5 @@ standardMisc.list = [
  insurance
 ];
 
- var lists = [standardClothes, standardToiletries, standardMisc, userAdd];
+var lists = [standardClothes, standardToiletries, standardMisc, userAdd];
 

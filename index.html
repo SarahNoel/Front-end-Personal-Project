@@ -15,36 +15,57 @@
   <h4>Helping ensure well-packed travelers around the globe. </h4>
 </div>
 
-<div class = "container">
+<br>
+<br>
 
-  <div class = "trip-deets"></div>
+<div class = "hide-later container">
+
 
   <div class = "jumbotron answer-div" id = "trip-info-div">
 
-  <form id = "trip-info">
-    <h3>When are you leaving?</h3>
-    In   <input class = "clear-input" id = "leave" type="number" name="quantity" min="0" max="14">  days.
-    <br>
-    <h3> How many days will you be gone?</h3>
-  <input class = "clear-input" id = "days" type="number" name="quantity" min="1" max="14">
-    <br>
-    <h3>Where are you going?</h3>
-   <input class = "clear-input" id = "location" type="text" name="city">
-    <br>
-    <br>
-  <input type = "submit" value= "Let's get packing!" class="submit">
-  </form>
-  </div>
+    <div class="trip-form">
+      <form id = "trip-info">
+        <h3>When are you leaving?</h3>
+        In   <input class = "clear-input" id = "leave" type="number" name="quantity" min="0" max="14">  days.
+        <br>
+        <h3> How many days will you be gone?</h3>
+      <input class = "clear-input" id = "days" type="number" name="quantity" min="1" max="14">
+        <br>
+        <h3>Where are you going?</h3>
+       <input class = "clear-input" id = "location" type="text" name="city">
+        <br>
+        <br>
+      <input type = "submit" value= "Let's get packing!" class="submit">
+      </form>
+      </div>
 
-  <div class = " sml invis">
-    <div class = "weather-info">
-    <h4>The Weather for your trip:</h4>
+      <div class = "trip-activity-form">
+          <p>Does your trip include...</p>
+          <select multiple class = "activities">
+            <option value="ski">Skiing/Snowboarding?</option>
+            <option value="swim">Swimming?</option>
+            <option value="camp">Camping?</option>
+            <option value="hike">Hiking?</option>
+            <option value="none">Nope!</option>
+
+          </select>
+          <br>
+          <h6 class = "tiny">(Hold command to select multiple activities)</h6>
+        </div>
+
+    </div>
+
+  </div>
+<div class="container">
+  <div class = "sml invis bckgrd">
+  <div class = "trip-deets bckgrd"></div>
+    <div class = "weather-info columns bckgrd">
     </div>
 </div>
   <div class= "all-pack">
 
 <h3 class= " invis row">What should you bring?</h3>
-<div class = "packing-div invis">
+<div class = "packing-div columns invis">
 
   <ul id="packing-list"></ul>
 
@@ -60,12 +81,11 @@
       </form>
         <br>
     </div>
-
 </div>
 </div>
 
 
-<!-- <div class="footer">Travel Smart.</div> -->
+<div class="hide-later footer">Travel Smart.</div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>

@@ -1,74 +1,102 @@
-
 body, html{
   font-family: 'Dosis', sans-serif;
   font-size: 18px;
   height: 100%;
   padding-bottom: 50px;
   font-weight: bold;
- /* background: -webkit-linear-gradient(bottom left, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-  background: -o-linear-gradient(bottom left, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);
-  background: linear-gradient(to top right, #f5f6f6 0%, #dbdce2 21%, #b8bac6 49%, #dddfe3 80%, #f5f6f6 100%);*/
-}
+  background-image: url("https://s-media-cache-ak0.pinimg.com/originals/07/e7/28/07e7280609f352fe8cf8c1b908621087.jpg");
+  background-size: cover;
+ }
 
-.container{
-  width: 100%;
+input{
+  border-radius: 10px;
 }
 
 p{
   font-size: 14px;
   font-weight: lighter;
 }
-.all-pack{
-  width: 100%
-}
 
-
-.row{
-  float: left;
-  width: 100%;
-}
-/*.weather-info{
-  height: 100%;
-  width: 100%;
-}*/
-.header{
-  border:3px solid #4cadad;
-  background-color: white;
+h1{
   text-align: center;
-}
-
-.container{
-  float:left;
-  height: 100%;
+  font-weight: bold;
+  font-size: 50px;
 }
 
 li{
   font-size: 16px;
   font-weight: lighter;
+}
 
+.sml{
+  background-color: #90bab8;
+  border-radius: 10px;
+}
+
+.header{
+  border:5px solid #BA9092;
+  background-color: #F5F2EE;
+  text-align: center;
 }
 
 .jumbotron{
-  width:100%;
+  height: 65%;
+  padding-top: 10px;
+  background-image: url("http://1942design.com/graphics/paper.jpg");
+  background-size: cover;
+
 }
-.row{
+
+.container{
+  float:left;
+  height: 100%;
+  width: 100%;
+}
+
+.all-pack{
+  width: 100%
+}
+
+.trip-activity-form{
+  margin-left: 100px;
   float: left;
 }
+
+
+.trip-form{
+  float:left;
+}
+
+.tiny{
+  font-size: 12px;
+}
+
+.row{
+  float: left;
+  width: 100%;
+}
+
+.center{
+  text-align: center;
+}
+
 .packing-div{
   clear: left;
   float: left;
   width: 100%;
-    -webkit-columns: 4 200px;
-     -moz-columns: 4 200px;
-          columns: 4 200px;
+  background-color: #F5F2EE;
+  border-radius: 10px;
+  padding-top: 10px;
 }
 
- .weather-info{
-  float: left;
-  width: 100%;
-    -webkit-columns: 4 200px;
-     -moz-columns: 4 200px;
-          columns: 4 200px;
+.trip-deets{
+  padding: 1px;
+}
+
+.columns{
+  -webkit-columns: 4 200px;
+   -moz-columns: 4 200px;
+        columns: 4 200px;
 }
 
 .add-item-div{
@@ -76,10 +104,9 @@ li{
   width: 25%
 }
 
-h1{
-  text-align: center;
-  font-weight: bold;
-  font-size: 50px;
+.weather-info{
+  padding-left: 10px;
+  padding-bottom: 15px;
 }
 
 .delete-click{
@@ -98,16 +125,21 @@ h1{
 
 .quantity-btn{
   text-align: center;
-  width:50px;
+  width: 37px;
+  border-radius: 10px;
 }
 
 .clear-input{
-  background-color: #eee;
+  background-color: #E8E0D5;
   text-align: center;
 }
 
+.checked{
+  text-decoration: line-through;
+}
+
 .footer{
-  background-color: #4CADAD;
+  background-color: #FAE0AF;
   border-top: 3px black solid;
   border-bottom: 3px black solid;
   bottom: 0;

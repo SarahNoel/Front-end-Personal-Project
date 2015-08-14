@@ -21,14 +21,14 @@ List.prototype.render = function(list){
   $('#packing-list').append("<h4>" + this.listName +"</h4>");
   for (var i = 0; i < this.list.length; i++) {
     $('#packing-list')
-      .append('<div><li><span id="sib">' + this.list[i].itemName + "        "  + '</span><button class="delete-click btn-xs btn-danger"></button></li><li class="quantity-form"><input class="quantity-btn" type ="number" name="quantity-items" min="1" value ="' + this.list[i].quantity + '"</li><br><br></div>');
+      .append('<div><li class="check" ><span id="sib">' + this.list[i].itemName + "        "  + '</span><button class="delete-click btn-xs btn-danger"></button></li><li class="quantity-form"><input class="quantity-btn" type ="number" name="quantity-items" min="1" value ="' + this.list[i].quantity + '"</li><br><br></div>');
   }
 };
 
 //ListItem constructor
 var ListItem = function(itemName, quantity){
   this.itemName = itemName;
-  this.quantity = quantity;
+  this.quantity = quantity || 1;
 };
 
 //method for changing quantity of ListItem
@@ -56,7 +56,8 @@ function renderLists(array){
     }
   }
 
-//change ListItem quantities based on length of trip
+
+//change ListItem amount based on days of travel
 function listQuantity(lists, length) {
   for (var i = 0; i < lists.length; i++) {
     for (var j = 0; j < lists[i].list.length; j++) {
@@ -77,10 +78,27 @@ function listQuantity(lists, length) {
         lists[i].list[j].quantity = parseFloat(length)-1;
         }
       }
-      else{
-        lists[i].list[j].quantity = 1;
-      }
     }
   }
   return lists;
 }
+
+//change Lists amount based on activities
+function activityList(activities) {
+  if (true) {};
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
