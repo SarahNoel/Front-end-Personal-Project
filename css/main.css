@@ -41,9 +41,11 @@ li{
 
 .weather1{
   float: left;
+  background-image: url('sun.gif')
 }
 
 .weather2{
+  background-image: url("clouds.jpg");
   float: right;
 }
 
@@ -115,6 +117,10 @@ li{
   font-weight: bold;
 }
 
+.fb-button{
+  margin-right: -100px;
+}
+
 .bolder{
   font-weight: 700;
   text-decoration: underline;
@@ -148,6 +154,7 @@ li{
 
 .trip-deets{
   padding: 1px;
+  padding-left: 10px
 }
 
 .columns{
@@ -156,7 +163,10 @@ li{
         columns: 5 200px;
 }
 
+
+
 .add-item-div{
+  /*display: none;*/
   text-align: center;
   margin: auto;
   width: 25%;
@@ -173,6 +183,8 @@ li{
 .weather-info{
   padding-left: 10px;
   padding-bottom: 15px;
+  min-height: 210px;
+
 }
 
 .delete-click{
@@ -203,6 +215,18 @@ li{
   text-decoration: line-through;
   font-style: oblique;
 }
+
+/*.share{
+  height: 50px;
+  width: 50px;
+  position: relative;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-image: url("clearF.gif");
+  background-size: cover;
+}*/
+
 
 .footer{
   font-family: 'Amatic SC', cursive;

@@ -52,9 +52,9 @@ ListItem.prototype.deleteItem = function(listDelete){
 function renderLists(array){
   $('#packing-list').html(" ");
   for (var i = 0; i < array.length; i++) {
-      array[i].render();
-    }
+    array[i].render();
   }
+}
 
 
 //change ListItem amount based on days of travel
@@ -64,7 +64,7 @@ function listQuantity(lists, length) {
       if(lists[i].list[j].quantity === "day"){
         lists[i].list[j].quantity = length;
        }
-       else if(lists[i].list[j].quantity === "less"){
+      else if(lists[i].list[j].quantity === "less"){
         if(length > 12){
           lists[i].list[j].quantity = 6;
         }
@@ -75,7 +75,7 @@ function listQuantity(lists, length) {
           lists[i].list[j].quantity = 1;
         }
         else{
-        lists[i].list[j].quantity = parseFloat(length)-1;
+          lists[i].list[j].quantity = parseFloat(length)-1;
         }
       }
     }
@@ -104,16 +104,18 @@ function checkWeather(weatherArray, activitiesArray){
 
 //change weather image
 function weatherImage (weatherArray){
-  if(weatherArray.indexOf("Rainy Weather")===1){
+  if(weatherArray.indexOf("Rainy Weather") != -1){
     $('.square').css('background-image', 'url("rainclear.gif")');
-    return;
-  }else if(weatherArray.indexOf("Cold/Snowy Weather")===1){
-  $('.square').css('background-image', 'url("snowclear.gif")');return;
-  }else{
-  $('.weather1').css('background-image','url("sun.gif")');
-       $('.weather2').css('background-image', 'url("clouds.jpg")');
+  }else if(weatherArray.indexOf("Cold/Snowy Weather") != -1){
+    $('.square').css('background-image', 'url("snowclear.gif")');
   }
 }
+
+//add item pop-up
+function itemPopUp(){
+console.log('test');
+}
+
 
 //create array of activity names
 function activityNames (activities){
@@ -135,27 +137,25 @@ function listActivities (activities, allLists, lists){
       activity = activities[i];
       if (activity === allLists[j].listName){
         pushMe = allLists[j];
-        if (lists.indexOf(pushMe)===-1){
-        lists.splice(3, 0, pushMe);
+          if (lists.indexOf(pushMe)===-1){
+            lists.splice(3, 0, pushMe);
+          }
         }
       }
     }
+    return lists;
   }
-  return lists;
-}
 
 
 //capitalize
 function capitalize(string) {
-    var splitStr = string.split(' ');
-    var fullStr = '';
-
-    $.each(splitStr,function(index){
-        var currentSplit = splitStr[index].charAt(0).toUpperCase() + splitStr[index].slice(1);
-        fullStr += currentSplit + " ";
-    });
-
-    return fullStr;
+  var splitStr = string.split(' ');
+  var fullStr = '';
+  $.each(splitStr,function(index){
+    var currentSplit = splitStr[index].charAt(0).toUpperCase() + splitStr[index].slice(1);
+    fullStr += currentSplit + " ";
+  });
+  return fullStr;
 }
 
 // remove spaces
@@ -163,10 +163,6 @@ function cutWhiteSpace(string) {
   return string.replace(/ /g,'');
 }
 
-
-
-
-
-
-
+// var dataList = document.getElementById('json-datalist');
+// var input = document.getElementById('ajax');
 

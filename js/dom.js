@@ -19,10 +19,11 @@ $(document).on('ready', function() {
     else if(length === ('')) {
       alert("Please specify the length of your trip.");
     }
+    //submit travel form
     else{
       var weatherDeets = [];
       var useWeather;
-      //hide trip form
+      //hide trip input form
       $('.hide-later').fadeOut();
       // create search URL for getting weather
       var searchUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&units=imperial&cnt=16&APPID=30dc5c7ce321f6b73a438b169eb9df48";
@@ -49,9 +50,9 @@ $(document).on('ready', function() {
 
           //print trip details
           if(length<2){
-            $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for one day!</h3><h4 class = 'center'>The weather for your trip:</h4>");
+            $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for one day!</h3><h4 class='center'> The weather for your trip:</h4>");
           }else{
-          $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for " + length + " days!</h3><h4 class = 'center'>The weather for your trip:</h4>");
+            $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for " + length + " days!</h3><h4 class='center'>The weather for your trip:</h4>");
           }
 
           //print arrival weather conditions
@@ -73,16 +74,18 @@ $(document).on('ready', function() {
           weatherImage (activitiesArray);
           //updates packing list quantities
           listQuantity(lists, length);
-
           //packing info appears
           //finds which list to use
           $('.invis').fadeIn().append(renderLists(listActivities(activitiesArray, allLists, lists)));
+          $('#packing-list').append('<button id="add-item">+</button>');
 
         },
         error:function(data){
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
         }
       });
+
+      //define vaiables for Instagram
       var imageURLs = [];
       var oneWordDestination = cutWhiteSpace(destination);
       var picUrl = "https://api.instagram.com/v1/tags/" + oneWordDestination + "/media/recent";
@@ -94,7 +97,7 @@ $(document).on('ready', function() {
         data: {client_id:'d04f59826a594c0e8690c8a05a777aa8'},
         dataType:'jsonp',
         success:function(data){
-          $("#pic-div").append('<a href="' + exploreUrl + '"><h4>See what people are tagging in ' + capitalize(destination) + '!</h4></a>');
+          $("#pic-div").append('<a href="' + exploreUrl + '"><h4>See what people are tagging about ' + capitalize(destination) + '!</h4></a>');
           var output = data.data;
           // iterate through the returned data, appending the images to the dom
           for(var i = 0; i < output.length; i++) {
@@ -107,27 +110,25 @@ $(document).on('ready', function() {
       } //end else statement
     }); //end submit button
 
-
-
-
-
-
-
-
-
-
+  //add new item using button
+    $(document).on("click", '#add-item', function(e){
+    e.preventDefault();
+    prompt("What item would you like to add?",
+            "How many?");
+    // var newItem = new ListItem($("#item").val(), $("#quantity").val());
+    });
 
 
   //add new Item to Etc list
   $('#new-item').on("click", function(e){
-      e.preventDefault();
-      var newItem = new ListItem($("#item").val(), $("#quantity").val());
-      userAdd.packItem(newItem);
-      renderLists(lists);
-      //clears inputs
-      $("#item").val("");
-      $("#quantity").val("");
-    });
+    e.preventDefault();
+    var newItem = new ListItem($("#item").val(), $("#quantity").val());
+    userAdd.packItem(newItem);
+    renderLists(lists);
+    //clears inputs
+    $("#item").val("");
+    $("#quantity").val("");
+  });
 
   //deletes item
   $(document).on("click", '.delete-click', function(){
