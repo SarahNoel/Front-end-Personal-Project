@@ -17,13 +17,39 @@ List.prototype.removeItem = function(item) {
 };
 
 //method for List
-List.prototype.render = function(list){
-  $('#packing-list').append("<h4>" + this.listName +"</h4>");
+List.prototype.render = function(location){
+  location.append("<h3>" + this.listName +"</h3>");
   for (var i = 0; i < this.list.length; i++) {
-    $('#packing-list')
+    location
       .append('<div><li class="check" ><span id="sib">' + this.list[i].itemName + "        "  + '</span><button class="delete-click btn-xs btn-danger"></button></li><li class="quantity-form"><input class="quantity-btn clear-input" type ="number" name="quantity-items" min="0" value ="' + this.list[i].quantity + '"</li><br><br></div>');
   }
 };
+
+//append all Lists in columns
+function renderAll(listsArray){
+  $('#packing-list-clothes').html('');
+  listsArray[0].render($('#packing-list-clothes'));
+  $('#packing-list-toiletries').html('');
+  listsArray[1].render($('#packing-list-toiletries'));
+  $('#packing-list-misc').html('');
+  listsArray[2].render($('#packing-list-misc'));
+  //acounts for addition lists based on weather/activities
+  if(listsArray.length === 4){
+    $('#packing-list-user').html('');
+    listsArray[3].render($('#packing-list-user'));
+    $('#packing-list-user').append('<button id="add-item">+</button>');
+  }
+  if(listsArray.length === 5){
+    $('#packing-list-weather').html('');
+    listsArray[4].render($('#packing-list-weather'));
+    $('#packing-list-weather').append('<button id="add-item">+</button>');
+  }
+  if(listsArray.length === 6){
+    $('#packing-list-activity').html('');
+    listsArray[5].render($('#packing-list-activity'));
+    $('#packing-list-activity').append('<button id="add-item">+</button>');
+  }
+}
 
 //ListItem constructor
 var ListItem = function(itemName, quantity){
@@ -47,15 +73,6 @@ ListItem.prototype.deleteItem = function(listDelete){
   index = listDelete.list.indexOf(this);
   listDelete.list.splice(index, 1);
 };
-
-//render all Lists
-function renderLists(array){
-  $('#packing-list').html(" ");
-  for (var i = 0; i < array.length; i++) {
-    array[i].render();
-  }
-}
-
 
 //change ListItem amount based on days of travel
 function listQuantity(lists, length) {
@@ -115,7 +132,6 @@ function weatherImage (weatherArray){
 function itemPopUp(){
 console.log('test');
 }
-
 
 //create array of activity names
 function activityNames (activities){

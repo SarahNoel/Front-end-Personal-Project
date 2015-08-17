@@ -56,7 +56,7 @@ $(document).on('ready', function() {
           }
 
           //print arrival weather conditions
-          $(".weather-info").append("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.</p><p>Conditions: " + conditions + ". </p><p>The weather the rest of the trip looks like this:<br> (forecast extends max 14 days)</p>");
+          $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:<br> (note: forecast only extends 14 days from today)</p><br>");
 
           //prints weather conditions for trip days
           for (var i = start; i <= returnDay; i++) {
@@ -66,7 +66,12 @@ $(document).on('ready', function() {
             dailyDay = data.list[i].temp.day.toFixed(0);
             dailyConditions = data.list[i].weather[0].description;
             weatherDeets.push(dailyDay, dailyConditions);
-           $(".weather-info").append("<p><span class = 'bolder'>Day " + dayNum + "</span>: <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions: " + dailyConditions + "</p>");
+            if (dayNum < 8){
+              $("#daily-weather").append("<td class= 'weather-box'><span class = 'bolder'>Day " + dayNum + "</span>: <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions:<br>" + dailyConditions + "</td>");
+              }
+            if (dayNum > 7){
+               $("#daily-weather2").append("<td class= 'weather-box'><span class = 'bolder'>Day " + dayNum + "</span>: <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions:<br>" + dailyConditions + "</td>");
+              }
           }
           //adds lists based on weather
           checkWeather(weatherDeets, activitiesArray);
@@ -74,11 +79,11 @@ $(document).on('ready', function() {
           weatherImage (activitiesArray);
           //updates packing list quantities
           listQuantity(lists, length);
-          //packing info appears
           //finds which list to use
-          $('.invis').fadeIn().append(renderLists(listActivities(activitiesArray, allLists, lists)));
-          $('#packing-list').append('<button id="add-item">+</button>');
-
+          listActivities(activitiesArray, allLists, lists);
+          //packing info appears
+          $('.invis').fadeIn();
+          renderAll(lists);
         },
         error:function(data){
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
@@ -110,11 +115,10 @@ $(document).on('ready', function() {
       } //end else statement
     }); //end submit button
 
-  //add new item using button
+  //add new item modal
     $(document).on("click", '#add-item', function(e){
     e.preventDefault();
-    prompt("What 66y8*item would you like to add?",
-            "How many?");
+    prompt("What item would you like to add?");
     // var newItem = new ListItem($("#item").val(), $("#quantity").val());
     });
 
@@ -124,7 +128,7 @@ $(document).on('ready', function() {
     e.preventDefault();
     var newItem = new ListItem($("#item").val(), $("#quantity").val());
     userAdd.packItem(newItem);
-    renderLists(lists);
+    renderAll(lists);
     //clears inputs
     $("#item").val("");
     $("#quantity").val("");

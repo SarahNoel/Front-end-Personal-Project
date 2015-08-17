@@ -115,9 +115,8 @@ var tp = new ListItem('Toilet Paper');
 var chillyList= new List("Chilly Weather");
 chillyList.list = [
   sweater,
-  jacket,
-
-]
+  jacket
+];
 
 
 //cold list - < 50 or snow
@@ -129,7 +128,7 @@ coldList.list = [
   beanie,
   gloves,
   scarf
-  ];
+];
 
 //rain list - rain
 var rainList = new List("Rainy Weather");
@@ -138,7 +137,7 @@ rainList.list = [
   raincoat,
   umbrella,
   rainBoots
-  ];
+];
 
 //camp list
 var campList = new List("Camping");
@@ -180,7 +179,7 @@ swimTrip.list = [
   coverUp,
   beachChair,
   aloeVera
-  ];
+];
 
 
 //ski list
@@ -202,10 +201,10 @@ skiTrip.list = [
 
 
 //pre-populated general lists
-var userAdd = new List("Etc");
+var userAdd = new List("Your List");
 userAdd.list = [
   userA
-  ];
+];
 
 //clothing list
 var standardClothes = new List("Clothes");
