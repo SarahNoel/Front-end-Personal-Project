@@ -37,9 +37,10 @@ function renderAll(listsArray){
     $('#packing-list').append("<div class = 'span1 packing-list'><ul id = 'packing" + i+"'></ul></div>");
     listsArray[i].render($('#packing'+ i));
   }$(lastUL).append(modalButton);
-  if($('#pics-here').html()!= '<div class = "pic-div parchment" id="pic-div"></div>'){
-   $("#pics-here").append('<div class = "pic-div parchment" id="pic-div"></div>');
-  }
+  // if($('#pics-here:first-child').firstChild === undefined){
+  //   $("#pics-here").append('<div class = "pic-div parchment" id="pic-div"></div>');
+  // }
+  //  console.log($('#pics-here').firstChild);
 }
 
 //ListItem constructor

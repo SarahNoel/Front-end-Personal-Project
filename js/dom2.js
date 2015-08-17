@@ -56,7 +56,7 @@ $(document).on('ready', function() {
           }
 
           //print arrival weather conditions
-          $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:</p><p class='tiny'>(note: forecast only extends 14 days from today)</p>");
+          $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:</p><p class='tiny'>`(note: forecast only extends 14 days from today)</p>");
 
           //prints weather conditions for trip days
           for (var i = start; i <= returnDay; i++) {
