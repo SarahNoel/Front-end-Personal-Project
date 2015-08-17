@@ -50,13 +50,13 @@ $(document).on('ready', function() {
 
           //print trip details
           if(length < 2){
-            $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for one day!</h3><h4 class='center'> The weather for your trip:</h4>");
+            $('.trip-deets').append("<h3 class='bigger center'> You are going to " + capitalize(destination) + " for one day!</h3><h4 class='center'> The weather for your trip:</h4>");
           }else{
             $('.trip-deets').append("<h3 class='center'> You are going to " + capitalize(destination) + " for " + length + " days!</h3><h4 class='center'>The weather for your trip:</h4>");
           }
 
           //print arrival weather conditions
-          $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:<br> (note: forecast only extends 14 days from today)</p><br>");
+          $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:</p><p class='tiny'>(note: forecast only extends 14 days from today)</p>");
 
           //prints weather conditions for trip days
           for (var i = start; i <= returnDay; i++) {
@@ -89,7 +89,6 @@ $(document).on('ready', function() {
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
         }
       });
-
       //define vaiables for Instagram
       var imageURLs = [];
       var oneWordDestination = cutWhiteSpace(destination);
@@ -114,14 +113,6 @@ $(document).on('ready', function() {
 
       } //end else statement
     }); //end submit button
-
-  //add new item modal
-    $(document).on("click", '#add-item', function(e){
-    e.preventDefault();
-    prompt("What item would you like to add?");
-    // var newItem = new ListItem($("#item").val(), $("#quantity").val());
-    });
-
 
   //add new Item to Etc list
   $('#new-item').on("click", function(e){

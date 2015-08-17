@@ -19,6 +19,7 @@ input{
 p{
   font-size: 18px;
   font-weight: lighter;
+  text-align: center
 }
 
 h1{
@@ -37,11 +38,48 @@ li{
   font-weight: lighter;
 }
 
+table{
+  text-align: center
+}
+
+.bigger{
+  font-family: 'Amatic SC', cursive;
+  font-size: 36px;
+}
+
 .weather-box{
   width: 150px;
 }
 
+.bring{
+  font-family: 'Amatic SC', cursive;
+  background-color: #FAE0AF;
+  width: 283px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
 
+.packing-div{
+  clear: left;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  padding-right: 50px;
+  display: table;
+}
+
+.pack-wrapper{
+  width: 100%
+}
+
+.container{
+  float: left;
+}
 
 .square{
   height: 125px;
@@ -64,6 +102,7 @@ li{
   border-radius: 10px;
   max-width: 1050px;
   margin: auto;
+  margin-bottom: 10px
 
 }
 
@@ -108,10 +147,6 @@ li{
   width: 100%;
 }
 
-.all-pack{
-  width: 100%
-}
-
 .tiny{
   font-size: 12px;
 }
@@ -140,15 +175,6 @@ li{
   font-weight: lighter;
 }
 
-.packing-div{
-  clear: left;
-  float: left;
-  width: 100%;
-  border-radius: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
 
 .parchment{
   background-image: url("http://www.zingerbugimages.com/backgrounds/beige_parchment_paper_background_1800x1600.jpg");
@@ -167,16 +193,6 @@ li{
   padding-left: 10px
 }
 
-
-.add-item-div{
-  text-align: center;
-  margin: auto;
-  width: 25%;
-  padding: 20px;
-  clear: both;
-  border-radius: 10px;
-}
-
 .shadow{
   padding: 10px;
   margin-top: 20px;
@@ -186,7 +202,6 @@ li{
   padding-left: 10px;
   padding-bottom: 15px;
   min-height: 230px;
-
 }
 
 .delete-click{
@@ -231,6 +246,10 @@ li{
 
 .packing-list{
   float: left;
+}
+.quantity-form{
+  width: 40px;
+  text-align: center;
 }
 
 .footer{

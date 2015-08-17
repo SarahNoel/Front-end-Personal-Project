@@ -18,36 +18,27 @@ List.prototype.removeItem = function(item) {
 
 //method for List
 List.prototype.render = function(location){
-  location.append("<h3>" + this.listName +"</h3>");
+  location.append("<h3 class = 'bigger'>" + this.listName +"</h3>");
   for (var i = 0; i < this.list.length; i++) {
     location
       .append('<div><li class="check" ><span id="sib">' + this.list[i].itemName + "        "  + '</span><button class="delete-click btn-xs btn-danger"></button></li><li class="quantity-form"><input class="quantity-btn clear-input" type ="number" name="quantity-items" min="0" value ="' + this.list[i].quantity + '"</li><br><br></div>');
   }
 };
 
-//append all Lists in columns
+// add item button
+var modalButton = '<input type="submit" value = "Add Item" class="submit" data-toggle="modal" data-target="#myModal">';
+
+// //append all Lists in columns
 function renderAll(listsArray){
-  $('#packing-list-clothes').html('');
-  listsArray[0].render($('#packing-list-clothes'));
-  $('#packing-list-toiletries').html('');
-  listsArray[1].render($('#packing-list-toiletries'));
-  $('#packing-list-misc').html('');
-  listsArray[2].render($('#packing-list-misc'));
-  //acounts for addition lists based on weather/activities
-  if(listsArray.length === 4){
-    $('#packing-list-user').html('');
-    listsArray[3].render($('#packing-list-user'));
-    $('#packing-list-user').append('<button id="add-item">+</button>');
-  }
-  if(listsArray.length === 5){
-    $('#packing-list-weather').html('');
-    listsArray[4].render($('#packing-list-weather'));
-    $('#packing-list-weather').append('<button id="add-item">+</button>');
-  }
-  if(listsArray.length === 6){
-    $('#packing-list-activity').html('');
-    listsArray[5].render($('#packing-list-activity'));
-    $('#packing-list-activity').append('<button id="add-item">+</button>');
+  $("#packing-list").html(" ");
+  var end = listsArray.length - 1;
+  var lastUL = "#packing"+end;
+  for (var i = 0; i < listsArray.length; i++) {
+    $('#packing-list').append("<div class = 'span1 packing-list'><ul id = 'packing" + i+"'></ul></div>");
+    listsArray[i].render($('#packing'+ i));
+  }$(lastUL).append(modalButton);
+  if($('#pics-here').html()!= '<div class = "pic-div parchment" id="pic-div"></div>'){
+   $("#pics-here").append('<div class = "pic-div parchment" id="pic-div"></div>');
   }
 }
 

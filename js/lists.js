@@ -71,8 +71,6 @@ var skiCoat = new ListItem('Ski Coat');
 var snowPants = new ListItem('Snow Pants');
 
 //additional items
-var userA = new ListItem('Add your own!');
-
 //for cold
 var sweater = new ListItem('Sweater');
 var coat = new ListItem('Coat');
@@ -202,9 +200,7 @@ skiTrip.list = [
 
 //pre-populated general lists
 var userAdd = new List("Your List");
-userAdd.list = [
-  userA
-];
+userAdd.list = [];
 
 //clothing list
 var standardClothes = new List("Clothes");

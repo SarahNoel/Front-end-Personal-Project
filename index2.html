@@ -68,46 +68,37 @@
         </table>
       </div>
     </div>
+    <div class = "row">
+    <h3 class= "invis bring">What should you bring?</h3>
+    </div>
+    <div class ="pack-wrapper invis">
+    <div class = "packing-div parchment" id="packing-list"></div>
+    </div>
+    <div id = "pics-here"></div>
 
-        <div class= "all-pack">
-    <h3 class= " invis row">What should you bring?</h3>
-      <div class = "row-fluid packing-div parchment invis" id="packing-list">
-        <div class = "span2 clothes-list packing-list">
-        <ul id="packing-list-clothes"></ul>
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content parchment">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title center" id="myModalLabel">Add your own Items!</h4>
+          </div>
+          <div class="modal-body">
+          <div class="center">
+            <form>Item to Add: <br>
+              <input type="text" name="added-item" id="item">
+              <br>Quantity: <br><input class = "quantity-form" type="number" name="gitem-quantity" id="quantity" placeholder = "1">
+              <br><br>
+              <input type="submit" value="Add Item" class="submit" id= "new-item" data-dismiss="modal">
+              <br>
+            </form>
+              <br>
+          </div>
+          </div>
         </div>
-        <div class = "span2 toiletries-list packing-list">
-        <ul id="packing-list-toiletries"></ul>
-        </div>
-        <div class = "span2 misc-list packing-list">
-        <ul id="packing-list-misc"></ul>
-        </div>
-        <div class = "span2 user-list packing-list">
-        <ul id="packing-list-user"></ul>
-        </div>
-         <div class = "span2 weather-list packing-list">
-        <ul id="packing-list-weather"></ul>
-        </div>
-         <div class = "span2 activity-list packing-list">
-        <ul id="packing-list-activity"></ul>
-        </div>
-      </div>
-
-
-    <div class = 'shadow'>
-      <div class="add-item-div parchment invis">
-        <form>Item to Add: <br>
-          <input type="text" name="added-item" id="item">
-          <br>Quantity: <br><input type="text" name="gitem-quantity" id="quantity">
-          <br><br>
-          <input type="submit" value="Add Item" class="submit" id= "new-item">
-          <br>
-        </form>
-          <br>
       </div>
     </div>
-  <div class = "invis pic-div parchment" id="pic-div">
-  </div>
-  </div>
   </div>
 
   <div class="hide-later footer">Travel Smart.</div>
