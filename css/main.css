@@ -42,6 +42,12 @@ table{
   text-align: center
 }
 
+.header{
+  border:5px solid #BA9092;
+  background-color: #F5F2EE;
+  text-align: center;
+}
+
 .bigger{
   font-family: 'Amatic SC', cursive;
   font-size: 36px;
@@ -104,12 +110,6 @@ table{
   margin: auto;
   margin-bottom: 10px
 
-}
-
-.header{
-  border:5px solid #BA9092;
-  background-color: #F5F2EE;
-  text-align: center;
 }
 
 .wrapper{
@@ -233,17 +233,6 @@ table{
   text-decoration: line-through;
   font-style: oblique;
 }
-
-/*.share{
-  height: 50px;
-  width: 50px;
-  position: relative;
-  float: right;
-  margin-top: 20px;
-  margin-right: 20px;
-  background-image: url("clearF.gif");
-  background-size: cover;
-}*/
 
 .packing-list{
   float: left;

@@ -10,6 +10,7 @@ $(document).on('ready', function() {
     var activitiesArray = (activityNames(activities));
 
     //makes sure all forms are filled
+    //sets when leaving and length of trip defaults to 1
     if (leave=== ('')) {
       leave = 1;
     }
@@ -21,6 +22,7 @@ $(document).on('ready', function() {
     }
     //submit travel form
     else{
+      //array of info used for weather images
       var weatherDeets = [];
       var useWeather;
       //hide trip input form
@@ -58,14 +60,17 @@ $(document).on('ready', function() {
           //print arrival weather conditions
           $(".weather-info").prepend("<p>On the day you arrive, the daytime temperature will be " + temp +" degrees.    The conditions will be:  " + conditions + ". </p><p>The weather the rest of your trip looks like this:</p><p class='tiny'>`(note: forecast only extends 14 days from today)</p>");
 
-          //prints weather conditions for trip days
+          //prints weather conditions for each trip day
           for (var i = start; i <= returnDay; i++) {
+            //number of the day of trip (eg, Day 1, Day 2)
             dayNum = i - start + 1;
             dailyLow = data.list[i].temp.min.toFixed(0);
             dailyHigh = data.list[i].temp.max.toFixed(0);
+            //daily temp/conditions for determining which list to add
             dailyDay = data.list[i].temp.day.toFixed(0);
             dailyConditions = data.list[i].weather[0].description;
             weatherDeets.push(dailyDay, dailyConditions);
+            //print daily info in two rows
             if (dayNum < 8){
               $("#daily-weather").append("<td class= 'weather-box'><span class = 'bolder'>Day " + dayNum + "</span>: <br>Low: " + dailyLow +"<br> High: " + dailyHigh + "<br> Conditions:<br>" + dailyConditions + "</td>");
               }
@@ -117,7 +122,9 @@ $(document).on('ready', function() {
   //add new Item to Etc list
   $('#new-item').on("click", function(e){
     e.preventDefault();
+    //instantiate new ListItem based on input
     var newItem = new ListItem($("#item").val(), $("#quantity").val());
+    //pack item into user List
     userAdd.packItem(newItem);
     renderAll(lists);
     //clears inputs
@@ -141,6 +148,7 @@ $(document).on('ready', function() {
         }
       }
     }
+    //removes item from screen
     $(this).closest('div').remove();
   });
 

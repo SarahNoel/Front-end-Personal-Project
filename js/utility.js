@@ -28,7 +28,7 @@ List.prototype.render = function(location){
 // add item button
 var modalButton = '<input type="submit" value = "Add Item" class="submit" data-toggle="modal" data-target="#myModal">';
 
-// //append all Lists in columns
+//append all Lists in columns
 function renderAll(listsArray){
   $("#packing-list").html(" ");
   var end = listsArray.length - 1;
@@ -37,10 +37,6 @@ function renderAll(listsArray){
     $('#packing-list').append("<div class = 'span1 packing-list'><ul id = 'packing" + i+"'></ul></div>");
     listsArray[i].render($('#packing'+ i));
   }$(lastUL).append(modalButton);
-  // if($('#pics-here:first-child').firstChild === undefined){
-  //   $("#pics-here").append('<div class = "pic-div parchment" id="pic-div"></div>');
-  // }
-  //  console.log($('#pics-here').firstChild);
 }
 
 //ListItem constructor
@@ -59,7 +55,6 @@ ListItem.prototype.changeItemName = function(name) {
   this.itemName = name;
 };
 
-
 //delete ListItem
 ListItem.prototype.deleteItem = function(listDelete){
   index = listDelete.list.indexOf(this);
@@ -67,6 +62,7 @@ ListItem.prototype.deleteItem = function(listDelete){
 };
 
 //change ListItem amount based on days of travel
+//takes in array of all Lists
 function listQuantity(lists, length) {
   for (var i = 0; i < lists.length; i++) {
     for (var j = 0; j < lists[i].list.length; j++) {
@@ -92,8 +88,18 @@ function listQuantity(lists, length) {
   return lists;
 }
 
+//create array of activity names
+function activityNames (activities){
+  var activity;
+  var activitiesArray = [];
+  for (var i = 0; i < activities.length; i++) {
+    activity = $(activities[i]).val();
+    activitiesArray.push(activity);
+  }
+  return activitiesArray;
+}
 
-//change list based on weather
+//adds list of weather conditions to activity arrray
 function checkWeather(weatherArray, activitiesArray){
   var split;
   for (var i = 0; i < weatherArray.length; i++) {
@@ -120,23 +126,7 @@ function weatherImage (weatherArray){
   }
 }
 
-//add item pop-up
-function itemPopUp(){
-console.log('test');
-}
-
-//create array of activity names
-function activityNames (activities){
-  var activity;
-  var activitiesArray = [];
-  for (var i = 0; i < activities.length; i++) {
-    activity = $(activities[i]).val();
-    activitiesArray.push(activity);
-  }
-  return activitiesArray;
-}
-
-// change Lists amount based on activities
+//adds Lists to array of Lists based on activities
 function listActivities (activities, allLists, lists){
   var activity;
   var pushMe;
@@ -154,8 +144,7 @@ function listActivities (activities, allLists, lists){
     return lists;
   }
 
-
-//capitalize
+//capitalizes
 function capitalize(string) {
   var splitStr = string.split(' ');
   var fullStr = '';
@@ -166,11 +155,7 @@ function capitalize(string) {
   return fullStr;
 }
 
-// remove spaces
+//removes white spaces
 function cutWhiteSpace(string) {
   return string.replace(/ /g,'');
 }
-
-// var dataList = document.getElementById('json-datalist');
-// var input = document.getElementById('ajax');
-
