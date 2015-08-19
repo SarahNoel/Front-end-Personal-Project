@@ -1,5 +1,5 @@
 $(document).on('ready', function() {
-
+  $(this).scrollTop(0);
   //get trip info on submit
   $('#trip-info').on("submit", function(e){
     e.preventDefault();

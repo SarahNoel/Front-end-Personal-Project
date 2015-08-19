@@ -36,7 +36,8 @@ function renderAll(listsArray){
   for (var i = 0; i < listsArray.length; i++) {
     $('#packing-list').append("<div class = 'span1 packing-list'><ul id = 'packing" + i+"'></ul></div>");
     listsArray[i].render($('#packing'+ i));
-  }$(lastUL).append(modalButton);
+  }
+  $(lastUL).append(modalButton);
 }
 
 //ListItem constructor
@@ -63,29 +64,29 @@ ListItem.prototype.deleteItem = function(listDelete){
 
 //change ListItem amount based on days of travel
 //takes in array of all Lists
-function listQuantity(lists, length) {
-  for (var i = 0; i < lists.length; i++) {
-    for (var j = 0; j < lists[i].list.length; j++) {
-      if(lists[i].list[j].quantity === "day"){
-        lists[i].list[j].quantity = length;
+function listQuantity(listsArray, length) {
+  for (var i = 0; i < listsArray.length; i++) {
+    for (var j = 0; j < listsArray[i].list.length; j++) {
+      if(listsArray[i].list[j].quantity === "day"){
+        listsArray[i].list[j].quantity = length;
        }
-      else if(lists[i].list[j].quantity === "less"){
+      else if(listsArray[i].list[j].quantity === "less"){
         if(length > 12){
-          lists[i].list[j].quantity = 6;
+          listsArray[i].list[j].quantity = 6;
         }
         else if(length > 9){
-          lists[i].list[j].quantity = 5;
+          listsArray[i].list[j].quantity = 5;
         }
         else if(length === 1){
-          lists[i].list[j].quantity = 1;
+          listsArray[i].list[j].quantity = 1;
         }
         else{
-          lists[i].list[j].quantity = parseFloat(length)-1;
+          listsArray[i].list[j].quantity = parseFloat(length)-1;
         }
       }
     }
   }
-  return lists;
+  return listsArray;
 }
 
 //create array of activity names
@@ -104,9 +105,9 @@ function checkWeather(weatherArray, activitiesArray){
   var split;
   for (var i = 0; i < weatherArray.length; i++) {
     split = weatherArray[i].split();
-    if (split[0].indexOf("rain")!= -1) {
+    if (split[0].indexOf("rain")!== -1) {
       activitiesArray.push("Rainy Weather");
-    }else if(split[0].indexOf("snow")!= -1){
+    }else if(split[0].indexOf("snow")!== -1){
       activitiesArray.push("Cold/Snowy Weather");
     }else if(parseFloat(split[0]) < 40){
       activitiesArray.push("Cold/Snowy Weather");
@@ -127,14 +128,14 @@ function weatherImage (weatherArray){
 }
 
 //adds Lists to array of Lists based on activities
-function listActivities (activities, allLists, lists){
+function listActivities (activitiesArray, allListsArray, lists){
   var activity;
   var pushMe;
-  for (var i = 0; i < activities.length; i++) {
-    for (var j = 0; j < allLists.length; j++) {
-      activity = activities[i];
-      if (activity === allLists[j].listName){
-        pushMe = allLists[j];
+  for (var i = 0; i < activitiesArray.length; i++) {
+    for (var j = 0; j < allListsArray.length; j++) {
+      activity = activitiesArray[i];
+      if (activity === allListsArray[j].listName){
+        pushMe = allListsArray[j];
           if (lists.indexOf(pushMe)===-1){
             lists.splice(3, 0, pushMe);
           }
