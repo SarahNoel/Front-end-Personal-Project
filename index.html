@@ -58,7 +58,9 @@
 
   </div>
   <div class="container">
+    <div class = "print-me">
     <div class = "sml invis">
+    <form class = "move"><input class= "print-btn invis" type="button" value="Printer Friendly" onclick='PrintElem(".print-me")'></form>
       <div class = "trip-deets"></div>
       <div class = "weather-info">
         <table>
@@ -68,11 +70,12 @@
         </table>
       </div>
     </div>
-    <div class = "row">
+    <div class = "row print-me">
     <h3 class= "invis bring">What should you bring?</h3>
     </div>
-    <div class ="pack-wrapper invis">
-    <div class = "packing-div parchment" id="packing-list"></div>
+    <div class ="pack-wrapper invis print-me">
+    <div class = "packing-div parchment print-me" id="packing-list"></div>
+    </div>
     </div>
     <div class = "pic-div parchment invis" id="pic-div"></div>
 
@@ -100,7 +103,6 @@
       </div>
     </div>
   </div>
-
   <div class="hide-later footer">Travel Smart.</div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

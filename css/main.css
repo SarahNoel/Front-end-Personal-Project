@@ -243,6 +243,16 @@ table{
   text-align: center;
 }
 
+.print-btn{
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #FAE0AF;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
 .footer{
   font-family: 'Amatic SC', cursive;
   font-size: 30px;

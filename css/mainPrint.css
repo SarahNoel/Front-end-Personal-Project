@@ -1,0 +1,120 @@
+body, html{
+  font-size: 12px;
+ }
+
+ul{
+  list-style: none;
+}
+
+p{
+  font-weight: lighter;
+  text-align: center
+}
+button{
+  display: none
+}
+h1{
+  text-align: center;
+  font-weight: bold;
+}
+
+h3{
+  font-size: 16px;
+}
+
+li{
+  font-weight: lighter;
+}
+
+table{
+  text-align: center
+}
+
+.quantity-btn {
+    text-align: center;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.bring{
+  width: 283px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.packing-div{
+  clear: left;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  padding-right: 50px;
+  display: table;
+}
+
+.pack-wrapper{
+  width: 100%
+}
+
+.container{
+  float: left;
+}
+
+.sml{
+  border-radius: 10px;
+  max-width: 1050px;
+  margin: auto;
+  margin-bottom: 10px
+
+}
+
+.wrapper{
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.container{
+  float:left;
+  height: 100%;
+  width: 100%;
+}
+
+.row{
+  padding-left: 10px;
+  float: left;
+  width: 100%;
+}
+
+.center{
+  text-align: center;
+  font-weight: bold;
+}
+
+.bolder{
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.lighter{
+  font-weight: lighter;
+}
+
+.trip-deets{
+  padding: 1px;
+  padding-left: 10px
+}
+
+.weather-info{
+  padding-left: 10px;
+  padding-bottom: 15px;
+  min-height: 230px;
+}
+
+.packing-list{
+  float: left;
+}

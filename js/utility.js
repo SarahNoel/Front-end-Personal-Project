@@ -26,7 +26,9 @@ List.prototype.render = function(location){
 };
 
 // add item button
-var modalButton = '<input type="submit" value = "Add Item" class="submit" data-toggle="modal" data-target="#myModal">';
+var modalPrintButton = '<input type="submit" value = "Add Item" class="submit" data-toggle="modal" data-target="#myModal">';
+
+
 
 //append all Lists in columns
 function renderAll(listsArray){
@@ -37,7 +39,7 @@ function renderAll(listsArray){
     $('#packing-list').append("<div class = 'span1 packing-list'><ul id = 'packing" + i+"'></ul></div>");
     listsArray[i].render($('#packing'+ i));
   }
-  $(lastUL).append(modalButton);
+  $(lastUL).append(modalPrintButton);
 }
 
 //ListItem constructor
@@ -160,3 +162,23 @@ function capitalize(string) {
 function cutWhiteSpace(string) {
   return string.replace(/ /g,'');
 }
+
+
+//print functions
+//create print element
+function PrintElem(elem){
+  Popup($(elem).html());
+}
+
+//create pop-up for printing
+function Popup(data) {
+  var mywindow = window.open('', 'my div', 'height=400,width=650');
+  mywindow.document.write('<html><head><title>Do I have Everything?</title>');
+  mywindow.document.write('<link rel="stylesheet" href="css/mainPrint.css" type="text/css" />');
+  mywindow.document.write('</head><body >');
+  mywindow.document.write(data);
+  mywindow.document.write('</body></html>');
+
+}
+
+
