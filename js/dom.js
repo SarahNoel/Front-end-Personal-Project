@@ -8,6 +8,7 @@ $(document).on('ready', function() {
     var destination = $('#location').val().toLowerCase();
     var activities = $('#activities option:selected');
     var activitiesArray = (activityNames(activities));
+    // var doURL = "'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="-33.8670522,151.1957362"&radius=500&types=food&name=cruise&key=AIzaSyAptxO3YRQMykzZrd-ANK7SZCfl_2KjGOs'"
 
     //makes sure all forms are filled
     //sets when leaving and length of trip defaults to 1
@@ -30,7 +31,8 @@ $(document).on('ready', function() {
       // create search URL for getting weather
       var searchUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&units=imperial&cnt=16&APPID=30dc5c7ce321f6b73a438b169eb9df48";
 
-      // ajax request
+
+      // weather ajax request
       $.ajax({
         url: searchUrl,
         type: 'GET',
@@ -94,11 +96,13 @@ $(document).on('ready', function() {
           alert("Sorry we're experiencing technical difficulties accessing the weather. Please try again later.");
         }
       });
-      //define vaiables for Instagram
+
+      //define variables for Instagram
       var imageURLs = [];
       var oneWordDestination = cutWhiteSpace(destination);
       var picUrl = "https://api.instagram.com/v1/tags/" + oneWordDestination + "/media/recent";
       var exploreUrl = "http://www.instagram.com/explore/tags/" + oneWordDestination;
+
       // Instagram ajax request
       $.ajax({
         url: picUrl,
@@ -115,9 +119,58 @@ $(document).on('ready', function() {
           }
         }
       });
+    }//end else statement
 
-      } //end else statement
-    }); //end submit button
+  //geocoder/places
+  var latitude;
+  var longitude;
+  var doURL;
+  var type = "food";
+  $('#do-there-btn').on("click", function(){
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': destination}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        latitude = results[0].geometry.location.lat();
+        longitude = results[0].geometry.location.lng();
+        console.log(latitude,longitude);
+        doURL = "'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+latitude + "," + longitude + "&radius=40500&types=" + type + "&key=AIzaSyAptxO3YRQMykzZrd-ANK7SZCfl_2KjGOs'";
+        var places = new google.maps.places.PlacesService();
+        // places.nearbySearch(request:latitude, longitude, callback:function(Array<PlaceResult>, PlacesServiceStatus, PlaceSearchPagination));
+        // console.log(results);
+
+
+// "'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=39.5186002,-104.76136329999997&radius=40500&types=food&key=AIzaSyAptxO3YRQMykzZrd-ANK7SZCfl_2KjGOs'"
+
+
+
+        }
+      })
+
+
+// AIzaSyAptxO3YRQMykzZrd-ANK7SZCfl_2KjGOs
+
+
+// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AIzaSyAptxO3YRQMykzZrd-ANK7SZCfl_2KjGOs
+
+
+
+
+// 'https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters'
+//
+//places api
+
+
+
+
+
+
+    })//end geocoder
+
+
+
+
+  });//end submit button
+}); //end of on-ready
 
   //add new Item to Etc list
   $('#new-item').on("click", function(e){
@@ -157,4 +210,3 @@ $(document).on('ready', function() {
     $(this).toggleClass('checked');
   });
 
-}); //end of document

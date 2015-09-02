@@ -28,8 +28,6 @@ List.prototype.render = function(location){
 // add item button
 var modalPrintButton = '<input type="submit" value = "Add Item" class="submit" data-toggle="modal" data-target="#myModal">';
 
-
-
 //append all Lists in columns
 function renderAll(listsArray){
   $("#packing-list").html(" ");
@@ -174,11 +172,8 @@ function PrintElem(elem){
 function Popup(data) {
   var mywindow = window.open('', 'my div', 'height=400,width=650');
   mywindow.document.write('<html><head><title>Do I have Everything?</title>');
-  mywindow.document.write('<link rel="stylesheet" href="css/mainPrint.css" type="text/css" />');
+  mywindow.document.write("<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'><link rel='stylesheet' href='css/mainPrint.css' type='text/css'>");
   mywindow.document.write('</head><body >');
   mywindow.document.write(data);
   mywindow.document.write('</body></html>');
-
 }
-
-

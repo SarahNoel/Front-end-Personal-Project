@@ -1,5 +1,7 @@
 body, html{
   font-size: 12px;
+  font-family: 'Dosis', sans-serif;
+
  }
 
 ul{
@@ -112,7 +114,6 @@ table{
 .weather-info{
   padding-left: 10px;
   padding-bottom: 15px;
-  min-height: 230px;
 }
 
 .packing-list{

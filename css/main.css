@@ -69,6 +69,24 @@ table{
   font-size: 40px;
 }
 
+.bring-button{
+  font-family: 'Amatic SC', cursive;
+  background-color: #FAE0AF;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.button-options{
+  padding: 10px;
+  display: inline-flex;
+  margin: auto;
+}
+
 .packing-div{
   clear: left;
   margin: auto;
@@ -251,6 +269,7 @@ table{
   border-radius: 10px;
   text-align: center;
   font-size: 14px;
+  font-weight: lighter;
 }
 
 .footer{
